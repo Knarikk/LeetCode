@@ -1,0 +1,39 @@
+def median(list1,list2):
+    mylist = []
+    i = 0
+    j = 0
+    m = len(list1)
+    n = len(list2)
+    while i < m and j < n:
+        if list1[i] < list2[j]:
+            mylist.append(list1[i])
+            mylist.append(list2[j])
+            j += 1
+            i += 1
+        else:
+            mylist.append(list2[j])
+            mylist.append(list1[i])
+            i += 1
+            j += 1
+            
+
+    for i in range(0,len(mylist)-1):
+        if mylist[i] > mylist[i+1]:
+            mylist[i],mylist[i+1] = mylist[i+1],mylist[i]
+
+    if m > n:
+        mylist = mylist + list1[n:]
+    else:
+        mylist = mylist + list2[m:]
+
+    print(mylist)
+
+    if (len(mylist) % 2 != 0):
+        return mylist[len(mylist)//2]
+    else:
+        return (mylist[(len(mylist) // 2 )] + mylist[(len(mylist)//2)-1]) / 2
+    
+    
+list1 = [1,2,3,4]
+list2 = [2]
+print(median(list1,list2))
